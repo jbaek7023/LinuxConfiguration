@@ -26,29 +26,29 @@ or
 12. Create a new user named catalog that has limited permissions to your catalog application database
 
 ================
-### 2. SSH into the server 
+### SSH into the server 
 ```
 ssh -i ~/.ssh/[RSA file] root@35.166.123.172
 ```
-### 3. Create a new user named grader
+### Create a new user named grader
 
 1. ``sudo adduser grader``
 
-### 4. Give the grader the permission to sudo
+### Give the grader the permission to sudo
 1. ``sudo nano /etc/sudoers.d/grader``
 2. add ``"grader ALL=(ALL:ALL) ALL"`` to the file. 
 
-### 5. Update all currently installed packages
+### Update all currently installed packages
 ``sudo apt-get update``
 ``sudo apt-get upgrade``
 
-### 6. Change the SSH port from 22 to 2200
+### Change the SSH port from 22 to 2200
 1. ``sudo nano /etc/ssh/sshd_config``
 2. Change ``Port 20`` to ``Port 2200``
 3. ``sudo service ssh restart`` 
 4. Next time to login, ``ssh -i ~/.ssh/udacity_key.rsa grader@35.166.123.172 -p 2200``
 
-### 7. Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
+### Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
 1. From ``/etc/services``, edit ssh port from 22 to 2200
 ```
 sudo ufw allow ssh
@@ -60,15 +60,15 @@ sudo ufw allow 123/tcp
 sudo ufw enable
 ```
 Reference :[digital-ocean ufw status and rules](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-14-04)
-### 8. Configure the local timezone to UTC
+### Configure the local timezone to UTC
 1. ``sudo dpkg-reconfigure tzdata``
 2. Find UTC option
-### 9. Install and configure Apache to serve a Python mod_wsgi application
+### Install and configure Apache to serve a Python mod_wsgi application
 ```
 sudo apt-get install apache2
 sudo apt-get install python-setuptools libapache2-mod-wsgi
 ```
-### 10. Install and configure PostgreSQL:
+### Install and configure PostgreSQL:
 ```
 sudo apt-get install postgresql
 sudo su - postgres
@@ -77,7 +77,7 @@ CREATE DATABASE catalog;
 CREATE USER catalog;
 postgres ALTER catalog password '12345' 
 ```
-### 11. Ensure that another user (such as grader) is allowed to remote/ssh login and sudo before disabling the remote root login, otherwise, the server could get irreversibly locked. 
+### Ensure that another user (such as grader) is allowed to remote/ssh login and sudo before disabling the remote root login, otherwise, the server could get irreversibly locked. 
 1. Login to VM and copy authorized key file to the grader's ssh directory. 
 
 ```
@@ -97,10 +97,10 @@ sudo chown -R grader:grader /home/grader/.ssh
 
 4. Test if I can login as grader. ``ssh -i ~/.ssh/udacity_key.rsa grader@35.166.123.172``
 
-### 12. Disable remote Login of the 'root' user
+### Disable remote Login of the 'root' user
 1. In /etc/ssh/sshd_config, change ``PermitRootLogin without-passwod`` to ``PermitRootLogin no``
 2. ``sudo service ssh restart`` 
-## deploy Flask Application
+## Deploy Flask Application Reference
 Reference to deploy Flask app on Ubuntu 
 [https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps)
 
