@@ -3,7 +3,7 @@
 1. IP address: http://35.166.123.172/
 2. SSH:
 ```
-ssh -i ~/.ssh/[RSA file] root@35.166.123.172
+ssh -i ~/.ssh/[RSA file] root@35.166.123.172 -p 2200
 ```
 
 ## The complete URL
