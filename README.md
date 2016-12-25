@@ -72,7 +72,7 @@ CREATE DATABASE catalog;
 CREATE USER catalog;
 postgres ALTER catalog password '12345' 
 ```
-### Ensure that another user (such as grader) is allowed to remote/ssh login and sudo before disabling the remote root login, otherwise, the server could get irreversibly locked. 
+### 11. Ensure that another user (such as grader) is allowed to remote/ssh login and sudo before disabling the remote root login, otherwise, the server could get irreversibly locked. 
 1. Login to VM and copy authorized key file to the grader's ssh directory. 
 ```
 ssh -i ~/.ssh/[RSA file] root@35.166.123.172
@@ -89,7 +89,7 @@ sudo chown -R grader:grader /home/grader/.ssh
 
 4. Test if I can login as grader. ``ssh -i ~/.ssh/udacity_key.rsa grader@35.166.123.172``
 
-### Disable remote Login of the 'root' user
+### 12. Disable remote Login of the 'root' user
 
 1. In /etc/ssh/sshd_config, change ``PermitRootLogin without-passwod`` to ``PermitRootLogin no``
 2. ``sudo service ssh restart`` 
