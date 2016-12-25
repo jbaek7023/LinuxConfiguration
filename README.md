@@ -24,6 +24,7 @@ or
 10. Install and configure PostgreSQL:
 11. Do not allow remote connections
 12. Create a new user named catalog that has limited permissions to your catalog application database
+
 ================
 ### 2. SSH into the server 
 ```
