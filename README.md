@@ -1,6 +1,6 @@
 # LinuxConfiguration
 
-1. IP address: http://35.166.123.172/
+1. IP address: http://35.166.123.172/ (The server is currently closed (April 2016))
 2. SSH:
 ```
 ssh -i ~/.ssh/[RSA file] root@35.166.123.172 -p 2200
